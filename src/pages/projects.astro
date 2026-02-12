@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+
+const projects = [
+  {
+    title: '[PLACEHOLDER] Project One',
+    description: '[PLACEHOLDER: Short description of the project — what it does, why it matters, or what you learned.]',
+    href: '#',
+  },
+  {
+    title: '[PLACEHOLDER] Project Two',
+    description: '[PLACEHOLDER: Short description of the project.]',
+    href: '#',
+  },
+  {
+    title: '[PLACEHOLDER] Project Three',
+    description: '[PLACEHOLDER: Short description of the project.]',
+    href: '#',
+  },
+];
+---
+<Layout title="Projects — Ivan Inocencio" description="Projects by Ivan Inocencio.">
+  <Header />
+  <main class="main">
+    <h1>Projects</h1>
+    <p class="intro">
+      [PLACEHOLDER: Optional intro line — e.g. “Things I’ve built or contributed to.”]
+    </p>
+    <ul class="project-list">
+      {projects.map((project) => (
+        <li class="project-card">
+          <h2 class="project-card__title">{project.title}</h2>
+          <p class="project-card__desc">{project.description}</p>
+          <a href={project.href} class="btn project-card__link">View project</a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  .intro {
+    margin-bottom: var(--space-xl);
+    color: #333;
+  }
+  .project-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+  .project-card {
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid #ddd;
+  }
+  .project-card:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .project-card__title {
+    margin-bottom: var(--space-sm);
+  }
+  .project-card__desc {
+    margin-bottom: var(--space-md);
+    color: #333;
+  }
+</style>

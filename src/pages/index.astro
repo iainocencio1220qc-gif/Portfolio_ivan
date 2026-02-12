@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import NewsletterForm from '../components/NewsletterForm.astro';
+---
+<Layout title="Ivan Inocencio — Home" description="Ivan Inocencio. Personal portfolio and weekly newsletter.">
+  <Header />
+  <main class="main">
+    <h1>Ivan Inocencio</h1>
+    <p class="lead">
+      [PLACEHOLDER: Short supporting subtext — e.g. “Builder, writer, and [your focus]. I share ideas and updates here.”]
+    </p>
+    <NewsletterForm />
+  </main>
+</Layout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: var(--space-xl);
+  }
+</style>
