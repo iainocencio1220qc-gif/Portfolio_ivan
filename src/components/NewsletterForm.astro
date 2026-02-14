@@ -15,10 +15,11 @@ const { variant = 'default' } = Astro.props;
       required
       autocomplete="email"
     />
-    <button type="submit" class="btn btn-accent newsletter__btn">
-      Join the newsletter
-    </button>
+    <button type="submit" class="btn btn-accent newsletter__btn">Join the newsletter</button>
   </form>
+  <p class="newsletter__note">
+    [PLACEHOLDER: I'll send 1–2 emails per week — focused on practical lessons, not noise.]
+  </p>
 </section>
 
 <style>
@@ -30,13 +31,13 @@ const { variant = 'default' } = Astro.props;
   }
   .newsletter__text {
     margin-bottom: var(--space-md);
-    color: #333;
+    color: var(--color-muted);
   }
   .newsletter__form {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-sm);
-    max-width: 28rem;
+    max-width: 34rem;
   }
   .newsletter__input {
     flex: 1 1 14rem;

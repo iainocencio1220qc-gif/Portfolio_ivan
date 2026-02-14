@@ -6,18 +6,19 @@ import NewsletterForm from '../components/NewsletterForm.astro';
 <Layout title="Ivan Inocencio — Home" description="Ivan Inocencio. Personal portfolio and weekly newsletter.">
   <Header />
   <main class="main">
-    <h1>Ivan Inocencio</h1>
-    <p class="lead">
-      [PLACEHOLDER: Short supporting subtext — e.g. “Builder, writer, and [your focus]. I share ideas and updates here.”]
-    </p>
+    <section class="hero" aria-label="Intro">
+      <div class="hero__copy">
+        <p class="hero__kicker">[PLACEHOLDER: Builder • Writer • Newsletter]</p>
+        <h1>Ivan Inocencio</h1>
+        <p class="lead">
+          [PLACEHOLDER: I build clean, high‑leverage software and share what I'm learning along the way — from projects and systems to career notes and practical experiments.]
+        </p>
+      </div>
+      <div class="hero__media">
+        <img class="avatar" src="/assets/ivan.jpg" alt="Ivan Inocencio" width="320" height="320" />
+      </div>
+    </section>
+
     <NewsletterForm />
   </main>
 </Layout>
-
-<style>
-  .lead {
-    font-size: 1.25rem;
-    color: #333;
-    margin-bottom: var(--space-xl);
-  }
-</style>

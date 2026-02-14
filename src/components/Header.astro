@@ -5,6 +5,10 @@ const nav = [
   { href: '/about/', label: 'About' },
   { href: '/projects/', label: 'Projects' },
 ];
+function isCurrent(href: string) {
+  if (href === '/') return currentPath === '/' || currentPath === '';
+  return currentPath.startsWith(href);
+}
 ---
 <header class="header">
   <nav class="nav" aria-label="Main">
@@ -14,7 +18,8 @@ const nav = [
         <li>
           <a
             href={item.href}
-            class:list={['nav-link', { 'nav-link--active': currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }]}
+            class="nav-link"
+            aria-current={isCurrent(item.href) ? 'page' : undefined}
           >
             {item.label}
           </a>
@@ -23,43 +28,3 @@ const nav = [
     </ul>
   </nav>
 </header>
-
-<style>
-  .header {
-    border-bottom: 2px solid var(--color-black);
-    padding: var(--space-md) var(--space-md);
-  }
-  .nav {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-md);
-  }
-  .nav-brand {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: var(--color-black);
-  }
-  .nav-brand:hover {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-  .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: var(--space-md);
-  }
-  .nav-link {
-    font-family: var(--font-body);
-    font-weight: 500;
-  }
-  .nav-link--active {
-    font-weight: 600;
-  }
-</style>

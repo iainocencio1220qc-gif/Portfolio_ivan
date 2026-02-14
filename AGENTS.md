@@ -17,15 +17,13 @@ This file documents the repository layout, how to run the site, and conventions 
 
 | Path | Purpose |
 |------|--------|
-| `static/` | **Canonical static site.** This is what users and launchers use. Edit here for immediate effect. |
-| `static/index.html` | Home: hero, photo, newsletter form. |
-| `static/about/index.html` | About page. |
-| `static/projects/index.html` | Projects list with placeholder cards and tags. |
+| `static/` | **Shared assets for build and no-server viewing.** Contains `styles.css` and `assets/` only (no HTML). |
 | `static/styles.css` | Global styles (dark theme, typography, components). |
 | `static/assets/` | Images (e.g. `ivan.jpg`). |
-| `src/` | Astro app (optional). Use if building with Node (`npm run dev` / `npm run build`). |
+| `local-static/` | **Static HTML for no-server viewing.** Home, about, projects; references `../static/` for CSS and assets. |
+| `src/` | Astro app. Build output goes to `dist/`; **deployed site uses this** (no overwrite from static HTML). |
 | `start_site.bat` | Starts Python HTTP server from `static/` and opens browser (requires Python). |
-| `Open portfolio (no server).bat` | Opens `static/index.html` in default browser via `file://` — **no server, no connection errors.** |
+| `Open portfolio (no server).bat` | Opens `local-static/index.html` in default browser via `file://` — **no server, no connection errors.** |
 | `serve_debug.py` | Debug server that serves `static/` and writes NDJSON logs to `.cursor/debug.log` for diagnosing connection issues. |
 | `HOW_TO_VIEW_SITE.txt` | Short user-facing instructions for viewing the site. |
 
@@ -36,7 +34,7 @@ This file documents the repository layout, how to run the site, and conventions 
 ### Recommended (no server)
 
 - **Double-click:** `Open portfolio (no server).bat`  
-- Opens `static/index.html` in the default browser via `file://`.  
+- Opens `local-static/index.html` in the default browser via `file://`.  
 - No server, no `ERR_CONNECTION_REFUSED`. Use this when the user just wants to see the site.
 
 ### With a local server
@@ -77,8 +75,8 @@ This file documents the repository layout, how to run the site, and conventions 
 
 ## Conventions for agents
 
-1. **Edit the static site first.** Change files under `static/` (HTML/CSS) for immediate, server-free impact. Keep Astro in sync only if the project is built with Node.
-2. **Assets:** Put images in `static/assets/` and reference them with relative paths (e.g. `./assets/ivan.jpg` from `static/index.html`).
+1. **Deployment uses Astro build.** The built site in `dist/` (from `src/`) is what gets deployed; `static/` only contributes `styles.css` and `assets/` to the build. Keep `src/` and `local-static/` in sync for design changes.
+2. **Assets:** Put images in `static/assets/`. In Astro pages use root-relative paths (e.g. `/assets/ivan.jpg`). In `local-static/` use `../static/assets/ivan.jpg`.
 3. **Placeholder content:** Keep or mark placeholder copy with `[PLACEHOLDER]` so it’s easy to find and replace later.
 4. **No backend:** Newsletter form is non-functional by design; no auth, database, or API.  
 5. **Launchers:** Do not remove `Open portfolio (no server).bat` or `start_site.bat` without providing an equivalent way to view the site; prefer updating `HOW_TO_VIEW_SITE.txt` and this file.
@@ -90,5 +88,5 @@ This file documents the repository layout, how to run the site, and conventions 
 - **View site (no server):** Run `Open portfolio (no server).bat`.  
 - **View site (with server):** Run `start_site.bat` or `py -m http.server 8000` from `static/` then open `http://127.0.0.1:8000/`.  
 - **Styles:** `static/styles.css`.  
-- **Home page:** `static/index.html`.  
+- **Home (no server):** `local-static/index.html`. **Deployed:** Astro build from `src/` → `dist/`.  
 - **User instructions:** `HOW_TO_VIEW_SITE.txt`.

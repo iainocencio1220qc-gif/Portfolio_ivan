@@ -22,6 +22,15 @@ const { title, description = "Ivan Inocencio — Personal portfolio and newslett
   <body>
     <div class="layout">
       <slot />
+      <footer class="footer">
+        <div class="footer__inner">
+          <p class="muted">© <span id="year"></span> Ivan Inocencio</p>
+          <p class="muted">Built to be minimal, fast, and easy to edit.</p>
+        </div>
+      </footer>
     </div>
+    <script>
+      document.getElementById('year')?.replaceWith(String(new Date().getFullYear()));
+    </script>
   </body>
 </html>

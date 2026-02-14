@@ -10,10 +10,18 @@ if %errorlevel% equ 0 (
 ) else (
   set PYCMD=python
 )
+where %PYCMD% >nul 2>&1
+if %errorlevel% neq 0 (
+  echo Python not found. Use "Open portfolio (no server).bat" to view the site without a server.
+  pause
+  exit /b 1
+)
 
-echo Starting portfolio server...
-start "Portfolio Server" cmd /k "cd /d %ROOT%static && echo. && echo Serving at http://127.0.0.1:8000/ && echo Keep this window open. Press Ctrl+C to stop. && echo. && %PYCMD% -m http.server 8000"
-timeout /t 3 /nobreak >nul
-start http://127.0.0.1:8000/
-echo Browser opened. Close this window; server runs in the other window.
+echo Starting portfolio server in a new window...
+echo Keep the "Portfolio Server" window OPEN. Closing it stops the site.
+echo.
+start "Portfolio Server" cmd /k "cd /d %ROOT% && echo. && echo Serving at http://127.0.0.1:8000/ && echo Site: http://127.0.0.1:8000/local-static/ && echo. && echo Keep this window open. Ctrl+C to stop. && echo. && %PYCMD% -m http.server 8000"
+timeout /t 5 /nobreak >nul
+start http://127.0.0.1:8000/local-static/
+echo Browser opened. Leave the "Portfolio Server" window open.
 timeout /t 2 /nobreak >nul
