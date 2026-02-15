@@ -1,0 +1,16 @@
+To view your portfolio site on this computer:
+
+--- EASIEST (no server, no connection errors) ---
+  Double-click:  Open portfolio (no server).bat
+  This opens the site directly in your browser. No server needed.
+
+--- With a local server (if you need one later) ---
+  Double-click:  start_site.bat
+  Keep the "Portfolio Server" window open; browser will open to the site.
+
+  Or from a terminal:  cd to project root, then   py -m http.server 8000
+  Then open:  http://127.0.0.1:8000/
+
+--- Deploy to Cloudflare Pages ---
+  Upload the project root (index.html, about.html, styles.css, assets/, etc.)
+  or connect your Git repo. Cloudflare Pages serves static sites with no config.

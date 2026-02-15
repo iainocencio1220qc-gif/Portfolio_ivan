@@ -1,0 +1,30 @@
+---
+const currentPath = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/projects/', label: 'Projects' },
+];
+function isCurrent(href: string) {
+  if (href === '/') return currentPath === '/' || currentPath === '';
+  return currentPath.startsWith(href);
+}
+---
+<header class="header">
+  <nav class="nav" aria-label="Main">
+    <a href="/" class="nav-brand">Ivan Inocencio</a>
+    <ul class="nav-list">
+      {nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="nav-link"
+            aria-current={isCurrent(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

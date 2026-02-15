@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Ivan Inocencio — Personal portfolio and newsletter." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="layout">
+      <slot />
+      <footer class="footer">
+        <div class="footer__inner">
+          <p class="muted">© <span id="year"></span> Ivan Inocencio</p>
+          <p class="muted">Built to be minimal, fast, and easy to edit.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById('year')?.replaceWith(String(new Date().getFullYear()));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Subscribe to Ivan Inocencio's newsletter for updates and insights." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Newsletter — Ivan Inocencio</title>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="header">
+        <nav class="nav" aria-label="Main">
+          <a href="index.html" class="nav-brand">Ivan Inocencio</a>
+          <ul class="nav-list">
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="about.html">About</a></li>
+            <li><a class="nav-link" href="projects.html">Projects</a></li>
+            <li><a class="nav-link" href="certifications.html">Certifications</a></li>
+            <li><a class="nav-link" href="newsletter.html" aria-current="page">Newsletter</a></li>
+            <li><a class="nav-link" href="now.html">Now</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main class="main">
+        <section class="section">
+          <h1>Newsletter</h1>
+          <p class="lead">
+            Get updates and practical insights in your inbox. No spam, no fluff — just what I'm learning and building.
+          </p>
+        </section>
+
+        <section class="section cta">
+          <h2 class="cta__title">Join the newsletter</h2>
+          <p class="cta__text">
+            I send 1–2 emails per week on projects, systems, career notes, and practical experiments. Focused on lessons you can use.
+          </p>
+
+          <!--
+            Newsletter form: HTML-only. Connect to your email service later.
+            Options: Buttondown, ConvertKit, Mailchimp, Resend, etc.
+            Form action and method will need to be set when wired.
+          -->
+          <form class="newsletter__form" action="#" method="post" style="justify-content: center; margin: 0 auto;">
+            <label for="newsletter-email" class="visually-hidden">Email address</label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="email"
+              class="input newsletter__input"
+              placeholder="you@example.com"
+              required
+              autocomplete="email"
+            />
+            <button type="submit" class="btn btn-accent newsletter__btn">Subscribe</button>
+          </form>
+
+          <p class="newsletter__note" style="margin-top: 1rem;">
+            Unsubscribe anytime. I never share your email.
+          </p>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer__inner">
+          <p class="muted">© 2025 Ivan Inocencio</p>
+          <p class="muted">Builder focused on clarity and craft.</p>
+          <nav class="footer__links" aria-label="Footer">
+            <a href="newsletter.html" class="muted">Newsletter</a>
+            <a href="#" class="muted">LinkedIn</a>
+            <a href="#" class="muted">Twitter</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
